@@ -52,11 +52,18 @@ class Letter extends React.Component {
     return (
       <div>
         {this.props.letterMinimal.completed ?
-        <List style={{maxWidth: 800, width: '100%', margin: 'auto'}}>
-          {
-            this.props.letterMinimal.data.map(this.letterItemFill)
-          }
-        </List>
+        <div>
+          {this.props.letterMinimal.data.length > 0 ?
+          <List style={{maxWidth: 800, width: '100%', margin: 'auto'}}>
+            {
+              this.props.letterMinimal.data.map(this.letterItemFill)
+            }
+          </List> :
+					<h3 style={{alignItems: 'center', display: 'flex',
+	          justifyContent: 'center', textAlign: 'center', marginTop: 100}}>
+	          This space is empty :( Please add a letter.
+	        </h3>}
+        </div>
         : <div>A</div>}
       </div>
     )

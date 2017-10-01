@@ -152,13 +152,11 @@ class Receiver extends React.Component {
       <FlatButton
         label="Cancel"
         primary={true}
-        onClick={this.handleClose}
-      />,
+        onClick={this.handleClose}/>,
       <FlatButton
         label="Add"
         primary={true}
-        onClick={this.handleSubmit}
-      />,
+        onClick={this.handleSubmit}/>,
     ];
 
     return (
@@ -174,11 +172,19 @@ class Receiver extends React.Component {
           justifyContent: 'center', textAlign: 'center', marginTop: 100}}>
           No one is here :( Please add a Receiver.
         </h3> :
-        <List style={{maxWidth: 600, width: '100%', margin: 'auto'}}>
-          {
-            this.props.receiver.data.map(this.receiverItemFill)
-          }
-        </List>}
+				<div>
+	        {this.props.receiver.data.length > 0 ? 
+					<List style={{maxWidth: 600, width: '100%', margin: 'auto'}}>
+	          {
+	            this.props.receiver.data.map(this.receiverItemFill)
+	          }
+	        </List> :
+					<h3 style={{alignItems: 'center', display: 'flex',
+	          justifyContent: 'center', textAlign: 'center', marginTop: 100}}>
+	          No one is here :( Please add a Receiver.
+	        </h3>
+					}
+				</div>}
         <FloatingActionButton
         onClick={this.addReceiver}
           style={{position: 'fixed', bottom: 0, right: 0, margin: 48}}>
