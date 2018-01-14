@@ -14,7 +14,7 @@ export default function (state = {
   	    return Object.assign({}, state, { initiating:false, error:false, data: action.payload, completed:true });
         break;
       case 'GET_RECEIVER_ERROR':
-      	return Object.assign({}, state, { initiating:false, error:true, message: action.payload, completed:true });
+      	return Object.assign({}, state, { initiating:false, error:true, data: action.payload, completed:true });
           break;
       default:
         return state;

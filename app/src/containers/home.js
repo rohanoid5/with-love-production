@@ -122,6 +122,7 @@ class Home extends React.Component {
 		this.refresh = this.refresh.bind(this);
     this.onLogOut = this.onLogOut.bind(this);
     this.addLetters = this.addLetters.bind(this);
+    console.log(localStorage.getItem('access_token'));
   }
 
   componentDidMount() {

@@ -23,13 +23,13 @@ export function getReceiverData() {
 				type: 'GET_RECEIVER_RECIEVED',
 				payload: response.data.receiver
 			});
-			//console.log(response.data.message);
+			console.log(response.data);
 		}).catch(function(error) {
 			dispatch({
 				type: 'GET_RECEIVER_ERROR',
 				payload: error.response.data
 			});
-			//console.log(error.response.data);
+			console.log(error.response.data);
 		});
 	};
 }
