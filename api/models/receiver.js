@@ -3,11 +3,8 @@ var Schema = mongoose.Schema;
 
 const ReceiverSchema = mongoose.Schema({
     _id: Schema.Types.ObjectId,
-    first_name: {
-        type: String
-    },
-    last_name: {
-        type: String
+    name: {
+      type: String
     },
     gender: {
         type: String,

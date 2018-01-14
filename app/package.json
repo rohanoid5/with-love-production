@@ -52,6 +52,7 @@
     "html-webpack-plugin": "^2.26.0",
     "minimist": "^1.2.0",
     "react-addons-test-utils": "^15.4.2",
+    "resolve-url-loader": "^2.2.1",
     "style-loader": "0.13.1",
     "sw-precache": "^4.3.0",
     "sw-precache-webpack-dev-plugin": "^0.1.3",

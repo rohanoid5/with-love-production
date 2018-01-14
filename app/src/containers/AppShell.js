@@ -11,6 +11,7 @@ import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import Avatar from 'material-ui/Avatar';
 import { hashHistory } from 'react-router';
 import IconButton from 'material-ui/IconButton';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 const cvDivStyle = {
     color: 'rgba(0, 0, 0, 0.7)',
@@ -115,12 +116,13 @@ export default class AppShell extends React.Component {
 
         if (this.state.title == 'Login' || this.state.title == 'Signup') {
             ps.bodyStyle = {
-                background: 'url("http://res.cloudinary.com/rohanoid5/image/upload/v1501421384/dark-mosaic_ze0rxo.png"), -webkit-linear-gradient(to left, #FF6B6C, #3452ff)',
-                background: 'url("http://res.cloudinary.com/rohanoid5/image/upload/v1501421384/dark-mosaic_ze0rxo.png"), linear-gradient(to left, #FF6B6C, #3452ff)',
-                height: '100vh',
-                display: 'flex'
+              background: 'linear-gradient(to left bottom, rgba(255, 107, 108, 0.6), rgba(52, 82, 255, 0.6)), url("pexels-photo.jpeg")',
+              height: '100vh',
+              display: 'flex',
+              backgroundSize: 'cover',
+              backgroundPosition: 'top',
+              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
             };
-
         } else {
             // ps.bodyStyle = {
             // 	margin: '0 auto',
@@ -139,17 +141,13 @@ export default class AppShell extends React.Component {
 
     render() {
         const propStyles = this.getPropBasedStyles();
-        return ( <
-            div >
-            <
-            div id = "content"
-            style = { propStyles.bodyStyle } > {
-                React.cloneElement(this.props.children, {
-                    setProperties: this.setProperties
-                })
-            } <
-            /div> <
-            /div>
+        return (
+          <div className={this.state.title == 'Login' ? "main main-raised" : "standard"} >
+            {
+              React.cloneElement(this.props.children,
+                {setProperties: this.setProperties})
+            }
+          </div>
         );
     }
 }

@@ -158,6 +158,41 @@ class Signup extends React.Component {
 							<RaisedButton primary={true} onClick={this.onSignupClick} label="Signup" style={style} />
 						</div>
 					</Card>
+					<div className="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+            <div className="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Creative Tim
+                </a>
+            </div>
+            <div className="sidebar-wrapper">
+              <ul className="nav">
+                <li className="active">
+                  <a href="dashboard.html">
+                    <i className="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="./user.html">
+                    <i className="material-icons">person</i>
+                    <p>User Profile</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="./table.html">
+                    <i className="material-icons">content_paste</i>
+                    <p>Table List</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="./typography.html">
+                    <i className="material-icons">library_books</i>
+                    <p>Typography</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+        	</div>
 				</div>
 	    );
 		}

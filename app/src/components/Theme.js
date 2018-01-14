@@ -19,7 +19,7 @@ export default {
     primary1Color: '#FF6B6C',
     primary2Color: '#7768AE',
     primary3Color: '#a30000',
-    accent1Color: '#FFFFFF',
+    accent1Color: '#7768AE',
     accent2Color: '#FFFFF0',
     accent3Color: '#FFFFF0',
     textColor: '#616161',

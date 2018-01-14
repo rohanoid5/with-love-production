@@ -21,6 +21,8 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import {List, ListItem, makeSelectable} from 'material-ui/List';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import LetterItem from './letterItem';
+import QuestionList from './questionList';
+import {GridList, GridTile} from 'material-ui/GridList';
 
 const styles = {
   title: {
@@ -37,7 +39,7 @@ class LetterDetails extends React.Component {
   		title: 'Home',
     }
     this.onCloseClick = this.onCloseClick.bind(this);
-
+    this.questionItemFill = this.questionItemFill.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +54,12 @@ class LetterDetails extends React.Component {
     hashHistory.goBack();
   }
 
+  questionItemFill(question, index) {
+    return (
+      <QuestionList key={question._id} question={question}/>
+    );
+  }
+
   render() {
     return (
       <div>
@@ -60,9 +68,102 @@ class LetterDetails extends React.Component {
             <AppBar
             title={<span style={styles.title}>{this.props.letterOne.data.letter.title}</span>}
             iconElementLeft={<IconButton onClick={this.onCloseClick}><NavigationClose /></IconButton>}/>
-            <Card style={{margin: 64, padding: 80, display: 'flex', justifyContent: 'center'}}>
-              <h3>SPACE FOR THE ACTUAL LETTER!!!</h3>
-            </Card>
+            <div className="content">
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-lg-3 col-md-6 col-sm-6">
+                    <div className="card card-stats">
+                      <div className="card-header" data-background-color="orange">
+                        <i className="material-icons">email</i>
+                      </div>
+                      <div className="card-content">
+                        <p className="category">Letter Type</p>
+                        <h3 className="title">
+                          { this.props.letterOne.data.letter.type }
+                        </h3>
+                      </div>
+                      <div className="card-footer">
+                        <div className="stats">
+                          <a href="#pablo">Get More Space...</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-6 col-sm-6">
+                    <div className="card card-stats">
+                      <div className="card-header" data-background-color="green">
+                        <i className="material-icons">monetization_on</i>
+                      </div>
+                      <div className="card-content">
+                        <p className="category">Payment</p>
+                        <h3 className="title">$2</h3>
+                      </div>
+                      <div className="card-footer">
+                        <div className="stats">
+                          { this.props.letterOne.data.letter.payment }
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-6 col-sm-6">
+                    <div className="card card-stats">
+                      <div className="card-header" data-background-color="red">
+                        <i className="material-icons">attach_file</i>
+                      </div>
+                      <div className="card-content">
+                        <p className="category">Link</p>
+                        <h3 className="title">
+                          Pending
+                        </h3>
+                      </div>
+                      <div className="card-footer">
+                        <div className="stats">
+                          Will be available shortly
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-6 col-sm-6">
+                    <div className="card card-stats">
+                      <div className="card-header" data-background-color="blue">
+                        <img src="avatar.jpg" alt="Thumbnail Image"
+                        style={{width: 60}}
+                        className="img-circle img-raised img-responsive"/>
+                      </div>
+                      <div className="card-content">
+                        <p className="category">Receiver</p>
+                        <h3 className="title">Jane Doe</h3>
+                      </div>
+                      <div className="card-footer">
+                        <div className="stats">
+                          Just Updated
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="content">
+                  <div className="container-fluid">
+                    <div className="row">
+                      <div style={{
+                        fontSize: '30px',
+                        fontWeight: 400,
+                        letterSpacing: '5px',
+                        textAlign: 'center',
+                        marginBottom: 12
+                      }}>
+                        <span>THE QUESTIONS YOU ANSWERED</span>
+                      </div>
+                      <GridList>
+                        {
+                          this.props.letterOne.data.letter.questions.map(this.questionItemFill)
+                        }
+                      </GridList>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         : <div>A</div>}
       </div>

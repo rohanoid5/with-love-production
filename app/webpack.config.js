@@ -51,7 +51,7 @@ module.exports = ({prod = false, sw = false, prefix = ''} = {}) => {
 
 			}, {
 				test: /\.css$/,
-				loader: 'style-loader!css-loader',
+				loaders: ['style-loader', 'css-loader', 'resolve-url-loader']
 			}]
 		},
 		plugins: [

@@ -20,6 +20,14 @@ import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import Subheader from 'material-ui/Subheader';
+import {
+  blue300,
+  indigo900,
+  orange200,
+  deepOrange300,
+  pink400,
+  purple500,
+} from 'material-ui/styles/colors';
 
 const style = {
   margin: 12,
@@ -84,6 +92,7 @@ class ReceiverItem extends React.Component {
     this.handleToggle = this.handleToggle.bind(this);
     this.handleNestedListToggle = this.handleNestedListToggle.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.getInitials = this.getInitials.bind(this);
   }
 
   handleToggle() {
@@ -97,56 +106,45 @@ class ReceiverItem extends React.Component {
       open: item.state.open,
     });
   }
+
   handleSelect() {
     //console.log(this.props.receiver._id);
     hashHistory.push('/select-letter/' + this.props.receiver._id);
   }
 
+  getInitials(name) {
+    let initials = name.match(/\b\w/g) || [];
+    initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+    return initials;
+  }
+
   render() {
     return (
-      <div style={{paddingLeft: 64, paddingRight: 64, margin: 8,
-        display: 'flex', flexDirection: 'row'}}>
-        <Card style={{flex: 4}}>
-          <ListItem key={this.props.receiver._id} style={{padding: 0}}
-          primaryText={this.props.receiver.first_name}
-          leftAvatar={<Avatar>B</Avatar>}
-          initiallyOpen={false}
-              primaryTogglesNestedList={true}
-              nestedItems={[
-                <ListItem style={{padding: 0}}
-                  key={2}
-                  primaryText="Gender"
-                  secondaryText={this.props.receiver.gender}
-                  />,
-                <ListItem
-                  style={{padding: 0}}
-                  key={3}
-                  primaryText="Relationship"
-                  secondaryText={this.props.receiver.relationship}
-                  />,
-                  <ListItem
-                    style={{padding: 0}}
-                    key={4}
-                    primaryText="Closeness"
-                    secondaryText={this.props.receiver.closeness + " /10"}
-                    />,
-                    <ListItem disabled={true} style={{padding: 0}}>
-                      <FlatButton
-                        key={0}
-                        primary={true}
-                        label="Delete"/>
-                      <FlatButton
-                        key={1}
-                        primary={true}
-                        label="Edit"/>
-                    </ListItem>
-              ]}/>
-        </Card>
-        <FlatButton style={{flex: 1, marginTop: 10}}
-          secondary={true}
+      <tr>
+        <td style={{textAlign: 'center', fontSize: 20}}>
+          <Avatar>
+            { this.getInitials(this.props.receiver.name) }
+          </Avatar>
+        </td>
+        <td style={{textAlign: 'center' , fontSize: 20}}>
+          {this.props.receiver.name}
+        </td>
+        <td style={{textAlign: 'center', fontSize: 20}}>
+          {this.props.receiver.gender}
+        </td>
+        <td style={{textAlign: 'center', fontSize: 20}}>
+          {this.props.receiver.relationship}
+        </td>
+        <td style={{textAlign: 'center', fontSize: 20}}>
+          {this.props.receiver.closeness + " /10"}
+        </td>
+        <td style={{textAlign: 'center'}}>
+          <FlatButton
+          primary={true}
           onClick={this.handleSelect}
           label="Select"/>
-      </div>
+        </td>
+      </tr>
     );
   }
 };

@@ -14,6 +14,7 @@ import {blue500, red500, green500} from 'material-ui/styles/colors';
 import SvgIcon from 'material-ui/SvgIcon';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider';
 
 const style = {
   margin: 12,
@@ -81,43 +82,43 @@ class Letter extends React.Component {
 
   render() {
     return (
-      <div style={{paddingLeft: 24, paddingRight: 24,
-        paddingTop: 8, paddingTop: 8}}>
-        <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
-          <CardTitle
-            title={this.props.letter.title}
-            subtitle={this.props.letter.description}
-            actAsExpander={true}
-            showExpandableButton={true}
-          />
-          <CardText expandable={true}>
-            <div style={{display: 'flex', flexDirection: 'row', paddingBottom: 8}}>
-              <div style={{marginTop: 4}}>Status:  Approved</div>
-              <CheckCircle style={{marginLeft: 4}} color={green500} hoverColor={blue500} />
+      <div style={{paddingLeft: 24, paddingRight: 24, paddingTop: 0}}>
+        <div>
+          <div className="card">
+            <div className="card-header" data-background-color="purple">
+              <h4 className="title">{ this.props.letter.title }</h4>
+              <p className="category">{ this.props.letter.description }</p>
             </div>
-            <div style={{display: 'flex', flexDirection: 'row', paddingBottom: 8}}>
-              <div style={{marginTop: 4}}>Type: {this.props.letter.type}</div>
-              <ActionFavorite style={{marginLeft: 4}} color=
-              {(() => {
-                switch (this.props.letter.type) {
-                  case 'lazy': return '#EF9A9A';
-                  case 'verbose': return '#F44336';
-                  case '': return '#B71C1C';
-                  default: return '#EF9A9A';
-                }
-              })()} hoverColor={blue500} />
+            <div className="card-content table-responsive">
+              <table className="table">
+                <thead>
+                  <th style={{textAlign: 'center'}}>Letter Type</th>
+                  <th style={{textAlign: 'center'}}>Payment</th>
+                  <th style={{textAlign: 'center'}}>Status</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style={{textAlign: 'center', fontSize: 15}}>
+                      { this.props.letter.type }
+                    </td>
+                    <td style={{textAlign: 'center', fontSize: 15}}>
+                      { this.props.letter.payment }
+                    </td>
+                    <td style={{textAlign: 'center', fontSize: 15}} className="text-primary">
+                      { this.props.letter.status }
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                <FlatButton label="See More" primary={true}
+                 style={{margin: 12}} onClick={this.seeMore}/>
+                <FlatButton label="Payment" primary={true}
+                 style={{margin: 12}} />
+              </div>
             </div>
-            <div style={{display: 'flex', flexDirection: 'row', paddingBottom: 8}}>
-              <div style={{marginTop: 4}}>Date: {new Date(this.props.letter.time_stamp).toDateString()}</div>
-              <DateRange style={{marginLeft: 4}} color={blue500} hoverColor={blue500} />
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row',
-            paddingBottom: 8}}>
-              <RaisedButton primary={true} label="See more"
-              onClick={this.seeMore} />
-            </div>
-          </CardText>
-        </Card>
+          </div>
+        </div>
       </div>
     );
   }

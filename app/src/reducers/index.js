@@ -7,6 +7,9 @@ import statusReducer from './statusReducer';
 import receiverReducer from './receiverReducer';
 import letterMinimalReducer from './letterMinimalReducer';
 import letterOneReducer from './letterOneReducer';
+import adminPaidLetterReducer from './adminPaidLetterReducer';
+import adminUnpaidLetterReducer from './adminUnpaidLetterReducer';
+import adminDispatchedLetterReducer from './adminDispatchedLetterReducer';
 
 const allReducers = combineReducers({
   authState: authReducer,
@@ -16,7 +19,10 @@ const allReducers = combineReducers({
   status: statusReducer,
   receiver: receiverReducer,
   letterMinimal: letterMinimalReducer,
-  letterOne: letterOneReducer
+  letterOne: letterOneReducer,
+  adminPaidLetter: adminPaidLetterReducer,
+  adminUnpaidLetter: adminUnpaidLetterReducer,
+  adminDispatchedLetter: adminDispatchedLetterReducer
 });
 
 const rootReducer = (state, action) => {

@@ -33,7 +33,18 @@ const LetterMinimalSchema = mongoose.Schema({
     }],
     author: {
         type: String
+    },
+    payment: {
+      type: String,
+      default: 'Incomplete'
+    },
+    status: {
+      type: String,
+      default: 'pending'
+    },
+    link_letter: {
+      type: String
     }
 });
 
-module.exports = mongoose.model('LetterMinimal', LetterMinimalSchema);
+module.exports = mongoose.model('Letters', LetterMinimalSchema);

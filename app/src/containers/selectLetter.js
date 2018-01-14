@@ -58,7 +58,7 @@ class SelectLetter extends React.Component {
   }
 
   componentWillMount() {
-    //this.props.setProps('Home', true, 0, 'menu');
+    this.props.setProperties('Home', false, 1, '');
   };
 
   onMouseOverCardOne() {
@@ -103,63 +103,59 @@ class SelectLetter extends React.Component {
 
   render() {
     return (
-      <div>
-        <AppBar
-        title={<span style={styles.title}>Please select one</span>}
-        iconElementLeft={<IconButton onClick={this.onCloseClick}><NavigationClose /></IconButton>}/>
+      <div style={{position: 'relative', height: '100%'}}>
+        <IconButton onClick={this.onCloseClick}
+        style={{position: 'absolute', right: 20, top: 20}}>
+          <NavigationClose />
+        </IconButton>
         <div className="container" style={pStyle}>
           <div className="row" style={{marginTop: 64}}>
-            <div className="col-sm-4" style={{padding: 8, margin: 0}}>
+            <div className="col-md-4" style={{padding: 8, margin: 0}}>
               <Card onMouseOver={this.onMouseOverCardOne} onMouseOut={this.onMouseOutCardOne}
-              style={{width: 200, height: 300,
+              style={{width: 300, height: 300,
               backgroundColor: '#EF9A9A', position: 'relative'}} zDepth={this.state.shadowCardOne}>
                 <h3 style={{textAlign: 'center', padding: 12, color: 'white'}}>
                   Lazy
                 </h3>
-                <p style={{textAlign: 'center', padding: 12, color: 'white'}}>
+                <p style={{textAlign: 'center', padding: 12, color: '#EEE', fontSize: 16}}>
                   Lazy but thoughtful? Just answer a few simple questions and we will do our magic.
                 </p>
-                <h2 style={{textAlign: 'center', padding: 12, color: 'white', marginTop: 44}}>
-                  ₹ 100
-                </h2>
                 <FlatButton secondary={true} style={{position: 'absolute',
-                bottom: '2px', right: '2px'}} label="Select"
-                onClick={this.goLazy} />
+                  bottom: '2px', right: '2px'}} label="Select"
+                  labelStyle={{color: '#FFF'}}
+                  onClick={this.goLazy} />
               </Card>
             </div>
-            <div className="col-sm-4" style={{padding: 8, margin: 0}}>
+            <div className="col-md-4" style={{padding: 8, margin: 0}}>
               <Card onMouseOver={this.onMouseOverCardTwo} onMouseOut={this.onMouseOutCardTwo}
-              style={{width: 200, height: 300,
+              style={{width: 300, height: 300,
               backgroundColor: '#F44336', position: 'relative'}} zDepth={this.state.shadowCardTwo}>
                 <h3 style={{textAlign: 'center', padding: 12, color: 'white'}}>
                   Precise
                 </h3>
-                <p style={{textAlign: 'center', padding: 12, color: 'white'}}>
+                <p style={{textAlign: 'center', padding: 12, color: '#EEE', fontSize: 16}}>
                   Have something specific in mind but need help? We got your back.
                 </p>
-                <h2 style={{textAlign: 'center', padding: 12, color: 'white', marginTop: 64}}>
-                  ₹ 200
-                </h2>
                 <FlatButton secondary={true} style={{position: 'absolute',
-                bottom: '2px', right: '2px'}} label="Select" onClick={this.goPrecise}/>
+                  bottom: '2px', right: '2px'}} labelStyle={{color: '#FFF'}}
+                 label="Select" onClick={this.goPrecise}/>
               </Card>
             </div>
-            <div className="col-sm-4" style={{padding: 8, margin: 0}}>
+            <div className="col-md-4" style={{padding: 8, margin: 0}}>
               <Card onMouseOver={this.onMouseOverCardThree} onMouseOut={this.onMouseOutCardThree}
-              style={{width: 200, height: 300,
+              style={{width: 300, height: 300,
               backgroundColor: '#B71C1C', position: 'relative'}} zDepth={this.state.shadowCardThree}>
                 <h3 style={{textAlign: 'center', padding: 12, color: 'white'}}>
                   Verbose
                 </h3>
-                <p style={{textAlign: 'center', padding: 12, color: 'white'}}>
+                <p style={{textAlign: 'center', padding: 12,
+                  color: '#EEE', fontSize: 16}}>
                   Want to make this one count? Want to let the person know how much they
                   mean to you? No need to worry. Our super powers are at your service.
                 </p>
-                <h2 style={{textAlign: 'center', padding: 12, color: 'white'}}>
-                  ₹ 300
-                </h2>
                 <FlatButton secondary={true} style={{position: 'absolute',
-                bottom: '2px', right: '2px'}} label="Select" onClick={this.goVerbose}/>
+                bottom: '2px', right: '2px'}} labelStyle={{color: '#FFF'}}
+                label="Select" onClick={this.goVerbose}/>
               </Card>
             </div>
           </div>

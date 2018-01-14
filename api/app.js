@@ -9,9 +9,11 @@ const jwt = require('jsonwebtoken');
 const user = require('./models/user');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const adminRoutes = require('./routes/admin');
 const letterMinimalRoutes = require('./routes/letter_minimal');
 const receiverRoutes = require('./routes/receiver');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 //seedDb();
 
@@ -30,6 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUpload());
 
 require('./config/passport')(passport);
 
@@ -39,6 +42,7 @@ require('./config/passport')(passport);
 
 app.use(authRoutes);
 app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
 app.use('/letter_minimal', letterMinimalRoutes);
 app.use('/receiver', receiverRoutes);
 

@@ -20,7 +20,7 @@ const CLIENT_ID = '37362612484-gubpuasdpb37vpp1gntsm1sl6bpo0tlm.apps.googleuserc
 const SCOPES = ['profile email'];
 
 const style = {
-	margin: 12,
+	margin: 12, width: '50%'
 };
 
 const pStyle = {
@@ -28,10 +28,9 @@ const pStyle = {
 	flexDirection: 'column',
 	justifyContent: 'center',
 	width: '100%',
-	maxWidth: 350,
 	margin: 'auto',
 	marginTop: 64,
-	padding: 24
+	padding: 20
 }
 
 const fStyle = {
@@ -153,30 +152,38 @@ class Login extends React.Component {
 		if(true) {
     	return (
 	      <div style={{margin:'auto', verticalAlign: 'middle'}}>
+					<header className="header">
+						<div className="logo-box">
+							<img src="logo_main.png" alt="Logo"
+							className="logo img-circle img-responsive"/>
+						</div>
+					</header>
 					<div style={pStyle}>
-						<Paper style={{paddingTop: '20px', paddingBottom: '20px',
-						marginBottom: 12, paddingLeft: 60, paddingRight: 60}}>
-		          <div style={{display: 'flex', flexDirection: 'row',
-								alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
-		            <h2 style={{color: '#FF6B6C', marginTop: 4}}>With Love </h2>
-								<ActionFavorite ref="action" style={{marginLeft: 6, marginTop: 6}}
-								color={cArray[this.state.myCounter % 4]} />
-		          </div>
-							<div style={{textAlign:'center', marginTop: '4px'}}>
-		            An easy way to express your Love.
-							</div>
-						</Paper>
+						<div style={{paddingTop: '20px', paddingBottom: '20px',
+						marginBottom: 12, paddingLeft: 0, paddingRight: 0}}>
+							<h1 style={{color: '#FFFFFF', textTransform: 'uppercase', }}>
+								<div className="heading-main row">
+									<span>With Love</span>
+									<ActionFavorite ref="action"
+									style={{marginLeft: 6, marginTop: 6, width: '40px', height: '40px'}}
+									color={cArray[this.state.myCounter % 4]} />
+								</div>
+								<div className="heading-sub">
+									An easy way to express your love
+								</div>
+							</h1>
+						</div>
 						<form style={fStyle}>
-	  				  <div style={bStyle}>
+	  				  <div className="login-btn-google">
 	  						<RaisedButton onClick={this.clickHandler}
-								style={style} label="Login" fullWidth={true}
+								style={style} label="Login"
 								disabled={this.props.authState.logging}
 								icon={<img src="ic_google.jpg" style={{height:18}}/>} />
 	  					</div>
 							<h5 style={{textAlign:'center', marginTop: '0px', color: 'white'}}>
 								Or
 							</h5>
-							<div>
+							<div className="login-btn-facebook">
 								<FacebookLogin socialId="SOCIAL_ID"
 								language="en_US"
 								scope="public_profile, email, user_friends"

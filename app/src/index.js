@@ -2,7 +2,9 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Router} from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import '../index.css';
+import '../style/index.css';
+import '../style/demo.css';
+import '../style/material-dashboard.css';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import Route from 'react-router/lib/Route';
@@ -30,7 +32,7 @@ export function hasAccessToken(){
 }
 
 function routeHomePages(s, cb) {
-	System.import('./containers/home').then(component => {
+	System.import('./containers/homeContainer').then(component => {
 		cb(null, component.default || component);
 	});
 }
@@ -71,8 +73,32 @@ function routeReceiver(s, cb) {
 	});
 }
 
+function routeCreateReceiver(s, cb) {
+	System.import('./containers/createReceiver').then(component => {
+		cb(null, component.default || component);
+	});
+}
+
 function routeLetterDetails(s, cb) {
 	System.import('./containers/letterDetails').then(component => {
+		cb(null, component.default || component);
+	});
+}
+
+function routeAdminLogin(s, cb) {
+	System.import('./containers/adminLogin').then(component => {
+		cb(null, component.default || component);
+	});
+}
+
+function routeAdminHome(s, cb) {
+	System.import('./containers/adminHome').then(component => {
+		cb(null, component.default || component);
+	});
+}
+
+function routeAdminLetterDetails(s, cb) {
+	System.import('./containers/adminLetterDetails').then(component => {
 		cb(null, component.default || component);
 	});
 }
@@ -87,8 +113,12 @@ render(
 					<Route path="questions-verbose/:id" getComponent={routeQuestionsVerbose}/>
           <Route path="questions-lazy/:id" getComponent={routeQuestionsLazy}/>
           <Route path="login" getComponent={routeLogin}/>
+          <Route path="admin-login" getComponent={routeAdminLogin}/>
+          <Route path="admin-home" getComponent={routeAdminHome}/>
+          <Route path="admin-letter-details/:id" getComponent={routeAdminLetterDetails}/>
           <Route path="signup" getComponent={routeSignUp}/>
           <Route path="receiver/:id" getComponent={routeReceiver}/>
+          <Route path="create-receiver" getComponent={routeCreateReceiver}/>
           <Route path="select-letter/:id" getComponent={routeSelectLetter}/>
           <Route path="letter-details/:id" getComponent={routeLetterDetails}/>
 	      </Route>

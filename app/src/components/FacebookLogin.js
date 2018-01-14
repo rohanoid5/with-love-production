@@ -64,8 +64,7 @@ export default class FacebookLogin extends React.Component {
 					disabledBackgroundColor="#94acdd"
      	    onClick={this.clickHandler.bind(this)}
           backgroundColor="#3b5998"
-          fullWidth={true}
-          style={{marginTop: 6}}
+          style={{marginTop: 6, width: '50%'}}
           icon={<img src="ic_facebook.png" style={{height:24}}/>} />
       </div>
     );
